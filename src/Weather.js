@@ -1,55 +1,55 @@
-import { useState } from "react";
-import axios from "axios";
+import React from "react";
 import "./Weather.css";
-import WeatherInfo from "./WeatherInfo";
 
-function Weather() {
-  let [city, setCity] = useState("Paris");
-  let [weather, setWeather] = useState(17);
-
-  function handleCity(event) {
-    event.preventDefault();
-    let apiKey = `9cb72bec958f8fb02391985ed7b219d2`;
-    let units = `metric`;
-    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-    axios.get(url).then(showWeather);
-  }
-
-  function showWeather(response) {
-    setWeather(response.data);
-  }
-
-  function updateCity(event) {
-    setCity(event.target.value);
-  }
+export default function Weather() {
   return (
-    <div className="App">
-      <div className="container">
-        <div className="Weather">
-          <form onSubmit={handleCity}>
-            <div className="row">
-              <div className="col-8">
-                <input
-                  type="search"
-                  placeholder="Enter a city"
-                  class="form-control search-input"
-                  onChange={updateCity}
-                />
-              </div>
-              <div class="col-4">
-                <input
-                  type="submit"
-                  value="Search"
-                  class="btn btn-primary w-100"
-                />
-              </div>
+    <div className="Weather">
+      <form>
+        <div className="row">
+          <div className="col-9">
+            <input
+              type="search"
+              placeholder="Enter a city"
+              className="form-control"
+              autoFocus="on"
+            />
+          </div>
+          <div className="col-3">
+            <input
+              type="submit"
+              value="Search"
+              className="btn btn-primary w-100"
+            />
+          </div>
+        </div>
+      </form>
+      <h1>New York</h1>
+      <ul>
+        <li>Wednesday, 7:00</li>
+        <li>Cloudy</li>
+      </ul>
+      <div className="row mt-3">
+        <div className="col-6">
+          <div className="clearfix">
+            <img
+              src="https://ssl.gstatic.com/onebox/weather/64/cloudy.png"
+              alt="Cloudy"
+              class="float-left"
+            />
+            <div className="float-left">
+              <span className="temperature">4</span>
+              <span className="unit">° C</span>
             </div>
-          </form>
-          <WeatherInfo weather={weather} />
+          </div>
+        </div>
+        <div className="col-6">
+          <ul className="desc">
+            <li>Precipitation: 8%</li>
+            <li>Humidity: 92%</li>
+            <li>Wind: 11 km/h</li>
+          </ul>
         </div>
       </div>
     </div>
   );
 }
-
-export default Weather;
