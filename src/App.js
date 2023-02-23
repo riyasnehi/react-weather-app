@@ -12,7 +12,11 @@ export default function App() {
             Riya Snehi
           </a>{" "}
           and is{" "}
-          <a href="/" target="_blank">
+          <a
+            href="https://github.com/riyasnehi/react-weather-app"
+            target="_blank"
+            rel="noreferrer"
+          >
             open-sourced on Github
           </a>
         </footer>
