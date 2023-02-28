@@ -55,7 +55,7 @@
 
 .Weather .desc {
   position: relative;
-  right: -100px;
+  top: -50px;
 }
 
 .Weather .deets {
